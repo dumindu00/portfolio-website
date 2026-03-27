@@ -1,0 +1,218 @@
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+    background: transparent;
+    color: #fff;
+    padding: 15px 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* cleaner than margin-left */
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+/* =========================
+   VIDEO SECTION
+========================= */
+.video-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* VIDEO */
+.bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: -1;
+}
+
+/* CONTENT */
+.content {
+    position: relative;
+    color: #fff;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero .text h1 {
+    font-size: 3rem;
+}
+
+.hero .text h2 {
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+.hero .text p {
+    margin: 15px 0;
+    max-width: 500px;
+}
+
+/* BUTTON */
+.btn {
+    padding: 10px 20px;
+    background: #fff;
+    color: #111;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* IMAGE */
+.hero .image img {
+    width: 220px;
+    border-radius: 50%;
+}
+
+/* =========================
+   ABOUT
+========================= */
+.about {
+    text-align: center;
+    padding: 80px 0;
+}
+
+.about p {
+    max-width: 700px;
+    margin: 20px auto 0;
+}
+
+/* =========================
+   FOOTER (TRANSPARENT FIX)
+========================= */
+.footer {
+    background: transparent; /* 🔥 FIXED */
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    backdrop-filter: blur(5px); /* optional modern effect */
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+/* TABLET */
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero .image img {
+        width: 180px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .nav-links {
+        display: none; /* later we can add hamburger */
+    }
+
+    .hero .text h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero .text h2 {
+        font-size: 1.2rem;
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .about {
+        padding: 60px 0;
+    }
+
+    /* Disable video for performance */
+    .bg-video {
+        display: none;
+    }
+
+    .video-section {
+        background: url('../images/fallback.jpg') no-repeat center/cover;
+    }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+    .hero .text h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}

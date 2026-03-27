@@ -1,0 +1,205 @@
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+    background: transparent;
+    color: #fff;
+    padding: 15px 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+/* =========================
+   VIDEO SECTION
+========================= */
+.video-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* VIDEO */
+.bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6); /* slightly darker for readability */
+    z-index: -1;
+}
+
+
+
+
+
+.content {
+    position: relative;
+    color: #fff;
+    flex: 1; /* takes all available vertical space */
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+   PROJECTS
+========================= */
+.projects {
+    padding: 100px 0 60px;
+    text-align: center;
+}
+
+.projects h2 {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+/* GRID */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* CARD */
+.card {
+    background: rgba(255, 255, 255, 0.1); /* fixed */
+    padding: 25px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    height: 150px; /* fixed height for uniformity */
+}
+
+.card:hover {
+    transform: translateY(-8px); /* fixed */
+}
+
+/* BUTTON */
+.btn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    background: #fff;
+    color: #111;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* =========================
+   FOOTER
+========================= */
+/* footer sticks at bottom of content */
+.footer {
+    margin-top: auto; /* pushes footer to bottom */
+    background: transparent;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    backdrop-filter: blur(5px);
+}
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* TABLET */
+@media (max-width: 992px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .nav-links {
+        display: none; /* later replace with hamburger */
+    }
+
+    .projects {
+        padding: 80px 0;
+    }
+
+    .projects h2 {
+        font-size: 2rem;
+    }
+
+    /* Disable video for performance */
+    .bg-video {
+        display: none;
+    }
+
+    .video-section {
+        background: url('../images/fallback.jpg') no-repeat center/cover;
+    }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects h2 {
+        font-size: 1.7rem;
+    }
+}
