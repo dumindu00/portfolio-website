@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+</head>
+<body>
+
+<h2>Admin Login</h2>
+
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<hr>
+
+<h2>Add Project</h2>
+
+<input type="text" id="name" placeholder="Project Name"><br>
+<input type="text" id="desc" placeholder="Description"><br>
+<input type="text" id="github" placeholder="GitHub URL"><br>
+<input type="file" id="image"><br>
+
+<button onclick="addProject()">Add Project</button>
+
+<hr>
+
+<h2>Projects List</h2>
+<div id="projects-list"></div>
+
+<script src="/private/admin.js"></script>
+
+</body>
+</html>
