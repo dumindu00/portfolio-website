@@ -2,7 +2,6 @@ const mongoose = require("mongoose")
 
 const SkillSchema = new mongoose.Schema({
     name : { type: String, required: true },
-    level: {type: String },
     iconURL: { type: String },
 }, { timestamps: true });
 
