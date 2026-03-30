@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const Project = require("../models/Projects");
 const auth = require("../middleware/auth");
+const upload = require("../middleware/upload");
+const { cloudinary } = require("../config/cloudinary");
+
 
 // GET all projects
 router.get("/", async (req, res) => {
@@ -13,18 +16,32 @@ router.get("/", async (req, res) => {
   }
 });
 
-// POST new project (admin only)
-const upload = require("../middleware/upload");
 
+
+// POST NEW PROJECT
 router.post("/", auth, upload.single("image"), async (req, res) => {
     try {
         const { name, description, githubURL } = req.body;
+
+        let imageURL = "";
+
+        if (req.file) {
+            // Convert buffer to base64
+            const b64 = Buffer.from(req.file.buffer).toString("base64");
+            const dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+
+            const result = await cloudinary.uploader.upload(dataURI, {
+                folder: "portfolio"
+            });
+
+            imageURL = result.secure_url;
+        }
 
         const newProject = new Project({
             name,
             description,
             githubURL,
-            imageURL: req.file ? req.file.originalname : ""
+            imageURL
         });
 
         await newProject.save();
@@ -35,6 +52,11 @@ router.post("/", auth, upload.single("image"), async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+
+
+
+
 
 // DELETE project by ID (admin only)
 router.delete("/:id", auth, async (req, res) => {

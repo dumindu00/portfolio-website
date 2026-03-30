@@ -27,6 +27,7 @@ app.use(cors());
 // Routes
 app.use("/api/projects", require("./routes/projects"));
 app.use("/api/skills", require("./routes/skills"));
+app.use("/api/achievements", require("./routes/Achievements"))
 app.use("/api/admin", require("./routes/admin"));
 
 

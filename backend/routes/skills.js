@@ -16,8 +16,8 @@ router.get("/", async (req, res) => {
 // POST new skill
 router.post("/", auth, async (req, res) => {
   try {
-    const { name, level, iconURL } = req.body;
-    const newSkill = new Skill({ name, level, iconURL });
+    const { name, iconURL } = req.body;
+    const newSkill = new Skill({ name, iconURL });
     await newSkill.save();
     res.json(newSkill);
   } catch (error) {
@@ -28,7 +28,7 @@ router.post("/", auth, async (req, res) => {
 // DELETE skill by ID
 router.delete("/:id", auth, async (req, res) => {
   try {
-    const skill = await Skill.findById(req.params.id);
+    const skill = await Skill.findByIdAndDelete(req.params.id);
     if (!skill) return res.status(404).json({ msg: "Skill not found" });
     await skill.deleteOne();
     res.json({ msg: "Skill removed" });
