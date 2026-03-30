@@ -29,6 +29,16 @@ function login() {
 }
 
 
+function logout() {
+    localStorage.removeItem("token")
+    alert("Logged out")
+
+    window.location.href = "/"
+}
+
+
+
+
 // =====================
 // HELPER
 // =====================
@@ -204,4 +214,18 @@ function addSkill() {
     .then(res => res.json())
     .then(() => alert("Skill added"))
     .catch(() => alert("Error adding skill"));
+}
+
+
+function checkAuthUI() {
+    const token = localStorage.getItem("token");
+
+    const adminSection = document.getElementById("admin-section");
+
+    if (!token) {
+        adminSection.style.display = "none";
+    } else {
+        adminSection.style.display = "block";
+        loadProjects();
+    }
 }
