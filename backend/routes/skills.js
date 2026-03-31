@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Skill = require("../models/Skills");
 const auth = require("../middleware/auth");
+const { cloudinary } = require("../config/cloudinary");
+const upload = require("../middleware/upload");
+
+
 
 // GET all skills
 router.get("/", async (req, res) => {
@@ -13,15 +17,46 @@ router.get("/", async (req, res) => {
   }
 });
 
-// POST new skill
-router.post("/", auth, async (req, res) => {
+
+// ADD NEW SKILL
+
+router.post("/", auth, upload.single('image'), async (req, res) => {
   try {
-    const { name, iconURL } = req.body;
-    const newSkill = new Skill({ name, iconURL });
-    await newSkill.save();
-    res.json(newSkill);
+    const { name } = req.body;
+
+    // 1. Basic Validation
+    if (!name) {
+      return res.status(400).json({ error: "Name is required" });
+    }
+
+    let iconURL = "";
+
+    // 2. Handle File Upload
+    if (req.file) {
+      const fileBase64 = req.file.buffer.toString("base64");
+      // Fixed the semicolon here:
+      const fileDataUri = `data:${req.file.mimetype};base64,${fileBase64}`;
+
+      const result = await cloudinary.uploader.upload(fileDataUri, {
+        folder: "portfolio",
+        resource_type: "auto" // Good practice to include
+      });
+
+      iconURL = result.secure_url;
+    }
+
+    // 3. Database Operation
+    const newItem = new Skill({
+      name,
+      iconURL
+    });
+
+    await newItem.save();
+    res.status(201).json(newItem);
+
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error("Upload Error:", error);
+    res.status(500).json({ error: "Server error during skill creation" });
   }
 });
 

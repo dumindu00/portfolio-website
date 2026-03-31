@@ -196,24 +196,39 @@ function addSkill() {
     }
 
     const name = document.getElementById("skillName").value;
-    const iconURL = document.getElementById("skillIcon").value;
+    const iconURL = document.getElementById("skillIcon")
+    const file = fileInput.files[0]
 
-    if (!name || !iconURL) {
+    if (!name || !file) {
         alert("All fields required");
         return;
     }
 
+    const formData = new FormData()
+    formData.append("name", name)
+    formData.append("image", file)
+
     fetch("/api/skills", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
             "Authorization": token
         },
-        body: JSON.stringify({ name, iconURL })
+        body: formData
     })
-    .then(res => res.json())
-    .then(() => alert("Skill added"))
-    .catch(() => alert("Error adding skill"));
+    .then(res => {
+        if (!res.ok) throw new Error("Upload failed")
+            return res.json()
+    })
+    .then(() => {
+        alert("Skill added")
+
+        document.getElementById("skillName").value = "";
+        fileInput.value = ""
+    })
+    .catch((err) => {
+        console.error(err)
+        alert("Error adding skill")
+    });
 }
 
 
