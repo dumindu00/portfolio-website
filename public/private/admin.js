@@ -196,7 +196,7 @@ function addSkill() {
     }
 
     const name = document.getElementById("skillName").value;
-    const iconURL = document.getElementById("skillIcon")
+    const fileInput = document.getElementById("skillIcon")
     const file = fileInput.files[0]
 
     if (!name || !file) {
