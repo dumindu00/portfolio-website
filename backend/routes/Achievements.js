@@ -10,7 +10,7 @@ const upload = require("../middleware/upload")
 router.get("/", async (req, res) => {
 
     try {
-        const achievements = await Achievement.find().sort({ createdAt: -1 });
+        const achievements = await Achievement.find().sort({ createdAt: 1 });
         res.json(achievements)
     } catch (error) {
         res.status(500).json({ error: error.message })

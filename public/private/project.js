@@ -13,7 +13,8 @@ fetch("/api/projects")
                 <img src="${project.imageURL}">
                 <h3>${project.name}</h3>
                 <p>${project.description}</p>
-                <button onclick="window.open('${project.githubURL}', '_blank')">Click</button>
+                <button   style="background-color: #28a745; color: white; border-radius: 8px; padding: 5px 15px; cursor: pointer;"
+                onclick="window.open('${project.githubURL}', '_blank')">Click</button>
             `;
 
             grid.appendChild(card);
