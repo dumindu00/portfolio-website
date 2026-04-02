@@ -175,9 +175,9 @@ body {
 /* MOBILE */
 @media (max-width: 768px) {
 
-    .nav-links {
-        display: none; /* later we can add hamburger */
-    }
+    /* .nav-links {
+        display: none; 
+    } */
 
     .hero .text h1 {
         font-size: 2.2rem;
@@ -196,13 +196,13 @@ body {
     }
 
     /* Disable video for performance */
-    .bg-video {
+    /* .bg-video {
         display: none;
     }
 
     .video-section {
         background: url('../images/fallback.jpg') no-repeat center/cover;
-    }
+    } */
 }
 
 /* SMALL MOBILE */
