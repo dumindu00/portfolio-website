@@ -17,7 +17,7 @@ connectDB();
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: "https://portfolio-website-6cum5tsx1-dumindu.vercel.app",
+    origin: "https://portfolio-website-dumindu.vercel.app/",
     credentials: true
 }));
 
