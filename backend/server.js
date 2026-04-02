@@ -16,7 +16,10 @@ connectDB();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "https://portfolio-website-729irfeiz-dumindu.vercel.app",
+    credentials: true
+}));
 
 
 
