@@ -98,7 +98,7 @@ function addProject() {
 // LOAD PROJECTS
 // =====================
 function loadProjects() {
-    fetch("https://portfolio-website-production-8edc.up.railway.app/api/projects")
+    fetch("http://localhost:5000/api/projects")
         .then(res => res.json())
         .then(data => {
             const container = document.getElementById("projects-list");
@@ -133,7 +133,7 @@ function deleteProject(id) {
 
     if (!confirm("Delete this project?")) return;
 
-    fetch(`https://portfolio-website-production-8edc.up.railway.app/api/projects/${id}`, {
+    fetch(`http://localhost:5000/api/projects/${id}`, {
         method: "DELETE",
         headers: { "Authorization": token }
     })
@@ -173,7 +173,7 @@ function addAchievement() {
     formData.append("description", desc);
     formData.append("image", image);
 
-    fetch("https://portfolio-website-production-8edc.up.railway.app/api/achievements", {
+    fetch("http://localhost:5000/api/achievements", {
         method: "POST",
         headers: { "Authorization": token },
         body: formData
@@ -208,7 +208,7 @@ function addSkill() {
     formData.append("name", name)
     formData.append("image", file)
 
-    fetch("https://portfolio-website-production-8edc.up.railway.app/api/skills", {
+    fetch("http://localhost:5000/api/skills", {
         method: "POST",
         headers: {
             "Authorization": token
