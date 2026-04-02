@@ -1,6 +1,6 @@
 const grid = document.getElementById("projects-grid");
 
-fetch("/api/projects")
+fetch("https://portfolio-website-production-8edc.up.railway.app/api/projects")
     .then(res => res.json())
     .then(data => {
         grid.innerHTML = "";
