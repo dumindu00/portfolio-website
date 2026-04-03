@@ -15,9 +15,7 @@ connectDB();
 
 // Middleware
 app.use(express.json());
-app.use(cors({
-  origin: "https://portfolio-website-xi-rosy-21.vercel.app" // frontend URL
-}));
+app.use(cors());
 
 
 
@@ -33,10 +31,10 @@ app.use("/api/admin", require("./routes/admin"));
 
 
 // Serve frontend static files
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("/admin", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/private/admin.html"))
+  res.sendFile(path.join(__dirname, "../public/private/admin.html"))
 })
 
 
@@ -50,7 +48,7 @@ app.get("/admin", (req, res) => {
 
 // Replace your current app.get('(*)', ...) with this:
 app.get(/^(?!\/api).+/, (req, res) => {
-  res.sendFile(path.join(__dirname, "public/index.html"));
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 
