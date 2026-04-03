@@ -5,7 +5,6 @@ const connectDB = require("./config/db");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const path = require("path");
-const auth = require("./middleware/auth")
 
 dotenv.config();
 
@@ -16,10 +15,7 @@ connectDB();
 
 // Middleware
 app.use(express.json());
-app.use(cors({
-    origin: "https://portfolio-website-dumindu.vercel.app/",
-    credentials: true
-}));
+app.use(cors());
 
 
 

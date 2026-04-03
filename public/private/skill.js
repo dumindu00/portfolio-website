@@ -1,5 +1,5 @@
 // ACHIEVEMENTS
-fetch("https://portfolio-website-production-8edc.up.railway.app/api/achievements")
+fetch("/api/achievements")
     .then(res => res.json())
     .then(data => {
         const grid = document.getElementById("achievements-grid");
