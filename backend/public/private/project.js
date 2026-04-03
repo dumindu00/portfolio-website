@@ -1,6 +1,6 @@
 const grid = document.getElementById("projects-grid");
 
-fetch("/api/projects")
+fetch("https://portfolio-website-kbv8jg.fly.dev/api/projects")
     .then(res => res.json())
     .then(data => {
         grid.innerHTML = "";
