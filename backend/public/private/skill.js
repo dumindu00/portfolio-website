@@ -1,5 +1,5 @@
 // ACHIEVEMENTS
-fetch("/api/achievements")
+fetch("https://portfolio-website-kbv8jg.fly.dev/api/achievements")
     .then(res => res.json())
     .then(data => {
         const grid = document.getElementById("achievements-grid");
@@ -23,7 +23,7 @@ fetch("/api/achievements")
 
 
 // SKILLS
-fetch("/api/skills")
+fetch("https://portfolio-website-kbv8jg.fly.dev/api/skills")
     .then(res => res.json())
     .then(data => {
         const grid = document.getElementById("skills-grid");
