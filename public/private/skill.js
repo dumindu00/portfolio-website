@@ -1,5 +1,5 @@
 // ACHIEVEMENTS
-fetch("/api/achievements")
+fetch("http://localhost:5000/api/achievements")
     .then(res => res.json())
     .then(data => {
         const grid = document.getElementById("achievements-grid");
@@ -23,7 +23,7 @@ fetch("/api/achievements")
 
 
 // SKILLS
-fetch("/api/skills")
+fetch("http://localhost:5000/api/skills")
     .then(res => res.json())
     .then(data => {
         const grid = document.getElementById("skills-grid");

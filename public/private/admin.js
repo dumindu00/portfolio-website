@@ -10,7 +10,7 @@ function login() {
         return;
     }
 
-    fetch("/api/admin/login", {
+    fetch("http://localhost:5000/api/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
@@ -79,7 +79,7 @@ function addProject() {
     formData.append("githubURL", github);
     formData.append("image", image);
 
-    fetch("/api/projects", {
+    fetch("http://localhost:5000/api/projects", {
         method: "POST",
         headers: { "Authorization": token },
         body: formData
@@ -98,7 +98,7 @@ function addProject() {
 // LOAD PROJECTS
 // =====================
 function loadProjects() {
-    fetch("/api/projects")
+    fetch("http://localhost:5000/api/projects")
         .then(res => res.json())
         .then(data => {
             const container = document.getElementById("projects-list");
@@ -133,7 +133,7 @@ function deleteProject(id) {
 
     if (!confirm("Delete this project?")) return;
 
-    fetch(`/api/projects/${id}`, {
+    fetch(`http://localhost:5000/api/projects/${id}`, {
         method: "DELETE",
         headers: { "Authorization": token }
     })
@@ -173,7 +173,7 @@ function addAchievement() {
     formData.append("description", desc);
     formData.append("image", image);
 
-    fetch("/api/achievements", {
+    fetch("http://localhost:5000/api/achievements", {
         method: "POST",
         headers: { "Authorization": token },
         body: formData
@@ -208,7 +208,7 @@ function addSkill() {
     formData.append("name", name)
     formData.append("image", file)
 
-    fetch("/api/skills", {
+    fetch("http://localhost:5000/api/skills", {
         method: "POST",
         headers: {
             "Authorization": token

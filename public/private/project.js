@@ -1,6 +1,6 @@
 const grid = document.getElementById("projects-grid");
 
-fetch("/api/projects")
+fetch("http://localhost:5000/api/projects")
     .then(res => res.json())
     .then(data => {
         grid.innerHTML = "";
